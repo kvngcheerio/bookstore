@@ -18,7 +18,32 @@ class AccountActivationController extends Controller
     * @param string $activation_token
     *
     * @return json response
-    */
+    *
+    * @SWG\Get(
+        *   path="/auth/activate/{activation_token}",
+        *   tags={"activation"},
+        *   summary="Activate user account",
+        *   description="",
+        *   operationId="index",
+        *   produces={"application/json"},
+        *   @SWG\Parameter(
+        *     name="activation_token",
+        *     in="path",
+        *     description="the activation token that was sent to the user",
+        *     required=true,
+        *     type="string"
+        *   ),
+        *   @SWG\Response(response=201, description="Account activated",
+        *       @SWG\Schema(
+        *         @SWG\Property(
+        *              property="status",
+        *              type="string",
+        *              description="Account activated"
+        *          )
+        * )),
+        *   @SWG\Response(response=400, description="Invalid activation link"),
+        * )
+        */
     public function getAccountActivation($activation_token)
     {
         $accountActivation = AccountActivation::where('token', $activation_token)->first();
