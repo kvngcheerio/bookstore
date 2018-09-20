@@ -13,7 +13,7 @@ use App\Api\V1\Traits\HasPictures;
 use App\Api\V1\Controllers\UserController;
 use App\Api\V1\Traits\HandlesEventLogging;
 
-class App extends Model
+class Book extends Model
 {
     use HasPictures, Filterable, HandlesEventLogging, AuditableTrait {
         
